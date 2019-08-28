@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  grid-area: header;
+  background-color: transparent;
+}
+
+.logo_name {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+ font: bold 25px "Roboto" ,sans-serif;
+ text-align: center;
+ color: white;
+ text-shadow: 1px 1px 1px #666,
+	  	             3px 3px 8px black;
+
+ background-color: transparent;
+}
+
+.loginBlock {
+
+}
+
+.loginBlock a {
+  padding-right: 20px;
+ font: 18px "Roboto" ,sans-serif;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 1px rgb(46, 46, 46),
+	  	             2px 2px 7px rgb(41, 0, 0);
+}
+
+@media screen and (min-width: 768px) {
+  .logo_name {
+    width: 115px;
+    height: 70px;
+  }
+
+  .loginBlock a {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .logo_name {
+    width: 150px;
+    height: 70px;
+  }
+
+  .loginBlock a {
+    font-size: 1.5rem;
+  }
+}

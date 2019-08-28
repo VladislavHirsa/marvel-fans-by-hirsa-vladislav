@@ -1,0 +1,60 @@
+.form input {
+    font-size: 1.2rem;
+    width: calc(40% - 10px);
+    background-color: transparent;
+    outline: none;
+    box-shadow: 0px -6px 15px 2px rgb(34, 34, 34);
+    color: whitesmoke;
+    border: 0px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    font-family: 'Comic Sans MS', fantasy;
+    padding-left: 10px;
+    margin-top: 7px;
+}
+
+/* .form input:-webkit-autofill {
+    background-color: transparent;   
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    transition: background-color 5000s ease-in-out 0s; 
+    -webkit-text-fill-color: whitesmoke;
+}
+
+
+.buttons {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+}
+
+.buttons button {
+    width: 100px;
+    height: 50px;
+    border: 0px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    font-family: 'Comic Sans MS', fantasy;
+    background-color: transparent;
+    cursor: pointer;
+    border: 3px solid rgb(136, 6, 6);
+}
+
+.buttons button:hover {
+    border: 3px solid rgb(59, 0, 0);
+}
+.buttons button:active {
+    border: 3px inset rgb(136, 6, 6);
+}
+
+@media screen and (max-width: 767px){
+    .form input {
+        border: 1px solid black;
+    }
+}

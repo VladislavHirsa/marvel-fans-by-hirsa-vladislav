@@ -1,0 +1,18 @@
+.profile_about_container{
+    padding: 15px 0 0;
+}
+.profile_about_container div{
+    font-size: 1.5rem;
+}
+
+.profile_person img{
+border-radius: 50%;
+border: 4px outset rgba(238, 2, 2, 0.678);
+}
+
+.profile_person div{
+    font-size: 1.5rem;
+
+}
+
+

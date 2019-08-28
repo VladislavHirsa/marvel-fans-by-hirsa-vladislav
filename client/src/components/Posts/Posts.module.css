@@ -1,0 +1,159 @@
+.post_container {
+    height: 100%;
+    background-color: transparent;
+}
+
+.post_items, .posts_list {
+    height: 90%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 0 5px;
+}
+
+
+
+.post_conteiner_dialog {
+    position: sticky;
+    bottom: 70px;
+    height: 10%;
+}
+
+.post_dialog {
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.textarea {
+    font-size: 1.2rem;
+    resize: none;
+    margin: 0;
+    width: 90%;
+    background-color: transparent;
+    box-shadow: 0px -6px 15px 2px rgb(34, 34, 34);
+    color: whitesmoke;
+    border: 0px;
+    letter-spacing: 1px;
+    font-family: 'Comic Sans MS', fantasy;
+    padding-left: 15px;
+    border-radius: 30px;
+}
+
+.dialog_button {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    border: 0;
+    width: 10%;
+    background-color: transparent;
+}
+
+.dialog_button img {
+    width: 32px;
+}
+
+.post_avatar {
+    border-radius: 50%;
+    width: 45px;
+}
+
+.item_frind {
+    display: flex;
+    align-items: flex-start;
+}
+
+.item_auth {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+}
+
+.post_name {
+    display: flex;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}
+
+.post_text {
+    word-wrap: break-word;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    width: 70%;
+}
+
+.posts_list {
+    
+    padding-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.posts_list_user {
+display: flex;
+align-content: flex-start;
+padding-bottom: 25px;
+text-decoration: none;
+width: 100%;
+}
+
+
+.posts_list_avatar {
+    border-radius: 50%;
+    width: 100px;
+    widows: 20%;
+}
+
+.post_remove {
+    width: 32px;    
+    
+}
+
+.posts_list_user_describe {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.post_list_button {
+    height: 32px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0px;
+}
+
+.posts_list_user {
+}
+
+
+@media screen and (min-width: 768px) {
+    .post_conteiner_dialog {
+        position: relative;
+        bottom: 0;
+        height: 10%;
+    }
+
+    .post_items::-webkit-scrollbar {
+        width: 32px;
+    }
+    .posts_list::-webkit-scrollbar {
+        width: 32px;
+    }
+    
+    
+    .post_items::-webkit-scrollbar-thumb {
+        background-image: url('../../assets/image/deadpool.png');
+        background-repeat: no-repeat;
+        width: 32px;
+        background-size: 32px;
+    }
+    
+    .posts_list::-webkit-scrollbar-thumb {
+        background-image: url('../../assets/image/deadpool.png');
+        background-repeat: no-repeat;
+        width: 32px;
+        background-size: 32px;
+    }
+}
+

@@ -1,0 +1,60 @@
+body { 
+    font-family: 'Comic Sans MS', fantasy;
+  background: linear-gradient(#333333, #770404, #161616);
+    margin: 0 auto;
+}
+
+
+
+.app_wrapper {
+    display: grid;
+    height: 100vh;
+    margin: 0 auto;
+
+    grid-template-columns: 100%;
+    grid-template-rows:  60px minmax(69vh, 80vh) 70px;
+    grid-template-areas: "header"
+                         "cont"
+                         "nav";
+    
+    
+}
+
+.content {
+    padding-top: 1rem;
+    background-color: transparent;    
+    grid-area: cont;
+  }
+
+
+
+@media screen and (min-width: 768px) {
+    .app_wrapper {
+        margin: 0 auto;
+        width: 768px;
+        /* max-width: 980px; */
+        grid-template-columns: 115px 653px;
+        grid-template-rows: 70px 1fr 1fr;
+        grid-template-areas: "header header"
+                             "nav cont"
+                             "nav cont";
+        
+        
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .app_wrapper {
+    margin: 0 auto;
+    width: 1200px;
+        grid-template-columns: 150px 1050px;
+        grid-template-rows: 70px 1fr 1fr;
+        grid-template-areas: "header header"
+                             "nav cont"
+                             "nav cont";
+        
+        
+    }
+}
+
+
