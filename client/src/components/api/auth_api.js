@@ -4,6 +4,7 @@ import setAuthToken from "../AuthToken/setAuthToken";
 // import REGISTER_SUCCESS from '../../redux/auth_reducer'
 import {AUTH_ERROR, LOGIN_FAIL } from '../../redux/auth_reducer'
 import { clearUserProfile } from "../../redux/profile_reducer";
+import { clearPost } from "../../redux/posts_reducer";
 
 
 export const instance = axios.create({
@@ -14,14 +15,11 @@ export const instance = axios.create({
 
 
      
-
-     
     export const getUserData = () => async(dispatch) => {
 
       try {
       const res = await axios.get('/api/auth')
         dispatch(getUser(res.data))
-        // console.log(res.data, "GetUserDAta")
       } catch (err) {
         console.log(err.message, "GetUserDAta")
 
@@ -79,8 +77,10 @@ export const loadUser = () => async dispatch => {
 
   
   export const logOut = () => (dispatch) => {
-    setTimeout(dispatch(clearUserProfile()), 2000)
-    setTimeout(dispatch(LogOut()), 2000)
+      dispatch(clearUserProfile())
+      dispatch(LogOut())
+      dispatch(clearPost())
+    
     
     
   }

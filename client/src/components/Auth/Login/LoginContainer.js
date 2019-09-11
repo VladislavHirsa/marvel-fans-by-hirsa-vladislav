@@ -35,12 +35,11 @@ setFormData({
     return <Redirect to='/profile' />;
   }
 
-  return (
-    <Fragment>
+  return <Fragment>
       <h1>Login</h1>
       <form className={css.form} onSubmit={e => onSubmit(e)}>
 
-        <label for='email' > Email </label>
+        <label htmlFor='email' > Email </label>
         <div>
             <input
               type='email'
@@ -51,9 +50,11 @@ setFormData({
               required
             />
           </div>
-            <label for='password'> Password</label>
+            <label htmlFor='password'> Password</label>
           <div>
-            <input
+            <input 
+            className={css.login_password}
+            autoComplete="new-password"
               type={ formData.hiden ? 'password' : 'text'}
               placeholder='Password'
               name='password'
@@ -64,7 +65,7 @@ setFormData({
           </div>
           <div className={css.buttons} >
             <button type='submit'> Login </button>
-            <button type='button' onClick={togglePassword} > Hide </button>
+            <button type='button' onClick={togglePassword} > { formData.hiden ? 'Hide' : 'Show'} </button>
           </div>
 
       </form>
@@ -72,7 +73,7 @@ setFormData({
         Don't have an account? <NavLink to='/register'>Register</NavLink>
       </p>
     </Fragment>
-  );
+  ;
 };
 Login.propTypes = {
   logInAPI: PropTypes.func.isRequired,

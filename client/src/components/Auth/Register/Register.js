@@ -46,6 +46,7 @@ const Register = ({ registerUser, isAuthenticated }) => {
       <label for='email' > Name </label>
         <div>
           <input
+          // autocomplete='off'
             type='text'
             placeholder='Name'
             name='name'

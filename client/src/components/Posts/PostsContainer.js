@@ -28,7 +28,9 @@ if( this.props.postList && this.props.postList.length === 0 ) {
       HelmetFunc({ content: 'Posts', title: 'Posts' })
     }
 
-      <PostsList postList={this.props.postList} deletePost={this.props.deletePost} /> 
+      <PostsList postList={this.props.postList} deletePost={this.props.deletePost} 
+      getAllPosts={this.props.getAllPosts}
+      /> 
       
     </>
   }

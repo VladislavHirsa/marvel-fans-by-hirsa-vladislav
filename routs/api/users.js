@@ -25,13 +25,13 @@ const errors = validationResult(req);
     // console.log(req.body);
     try {
 
-        let userEmail = await User.findOne({email})
         let userName = await User.findOne({name})
+        let userEmail = await User.findOne({email})
 
-        if(userEmail) {
-           return res.status(400).json({ errors: [{ msg: 'The email exist alredy'}]})
-        } else if (userName) {
-           return res.status(400).json({ errors: [{ msg: 'The user name exist alredy'}]})
+        if(userName) {
+            return res.status(400).json({ errors: [{ msg: 'The user name exist alredy'}]})
+        } else if (userEmail) {
+            return res.status(400).json({ errors: [{ msg: 'The email exist alredy'}]})
         }
     
         const avatar = gravatar.url(email, {

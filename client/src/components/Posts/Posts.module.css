@@ -3,14 +3,6 @@
     background-color: transparent;
 }
 
-.post_items, .posts_list {
-    height: 90%;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    padding: 0 5px;
-}
-
-
 
 .post_conteiner_dialog {
     position: sticky;
@@ -85,7 +77,6 @@
 }
 
 .posts_list {
-    
     padding-left: 1rem;
     font-size: 1.2rem;
 }
@@ -117,13 +108,19 @@ width: 100%;
 }
 
 .post_list_button {
+    display: none;
     height: 32px;
     cursor: pointer;
     background-color: transparent;
     border: 0px;
 }
 
-.posts_list_user {
+.posts_list_user:hover .post_list_button {
+    display: block;
+}
+
+.item_auth:hover .post_list_button {
+    display: block;
 }
 
 

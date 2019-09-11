@@ -37,17 +37,13 @@ const errors = validationResult(req);
     try {
 
         let user = await User.findOne({email})
-        let userPassword = await User.findOne({password})
 
         if(!user) {
            return res
            .status(400)
            .json({ errors: [{ msg: 'Invalid Email'}]})
-        } else if (!userPassword) {
-            return res
-           .status(400)
-           .json({ errors: [{ msg: 'Invalid Password'}]})
-        }
+        } 
+        
     
        const isMatch = await bcrypt.compare(password, user.password)
 

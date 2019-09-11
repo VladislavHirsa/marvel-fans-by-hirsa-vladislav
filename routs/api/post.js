@@ -47,7 +47,8 @@ if( post ) {
         text: req.body.text,
         name: user.name,
         avatar: user.avatar,
-        user: req.user.id
+        user: req.user.id,
+        readed: false
         });
 
 } 
@@ -149,22 +150,41 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
-router.delete('/post/:post_id', auth, async (req, res) => {
+router.delete('/post/:post_id/:user_id', auth, async (req, res) => {
+        // console.log(req,'postpostpostpostpostpostpostpostpostpostpostpost')
  
-    // await console.log(req,"________---DIFERENT---______");
-    try {
-         const post = await Post.findById(req.params.post_id);
+        
+        try {
+            const ownPost = await UserPost.findOne({ownerPosts: req.user.id});
+            const friendPost = await UserPost.findOne({ownerPosts: req.params.user_id});
+          
+            const delPost = ownPost.postList.find(
+                post => post.post_id.toString() === req.params.post_id.toString()
+                );
+            ownPost.postList.pull(delPost);
 
-        // console.log(post,'postpostpostpostpostpostpostpostpostpostpostpost')
-        // if(post.user.id !== req.user.id) {
-        //     console.error(err.message);
-        //     res.status(400).send('User not autorized')
-        // }
+            const delPostFriend = friendPost.postList.find(
+                post => post.post_id.toString() === req.params.post_id.toString()
+                );
+                    console.log(delPostFriend, 'Delete Success')
+            
+            if(!delPostFriend) {
+               await Post.findOneAndRemove({ _id: req.params.post_id }, 
+                (err, doc) => {
+                    if(err) {
+                        throw err;
+                    }
+                    console.log(doc, 'Delete Success')
+               });
+            
+            }
 
-        await post.remove();
-        res.json({
-            msg: 'Post deleted'
-        });
+            await ownPost.save();
+                
+                res.json({
+                msg: 'Post deleted'
+                });
+        
     } catch (err) {
         console.error(err.messasge);
         if(err.kind === 'ObjectId') {
@@ -175,29 +195,56 @@ router.delete('/post/:post_id', auth, async (req, res) => {
 });
 
 
-router.put('/likes/:id', auth, async (req, res) => {
+router.delete('/posts/:posts_id/:message_id', auth, async(req, res) => {
+
     try {
-        const post = await Post.findById(req.params.id);
-
-
-        if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
-            
-             let postNew =  post.likes.map(like => like.user.toString()).indexOf(req.user.id)
-            post.likes.splice(postNew, 1);
-            // return res.status(400).json({msg: "Like is been"});
         
-    } else if(post.likes.filter(like => like.user.toString() === req.user.id).length === 0){
+      let ownPost = await Post.findById({ _id: req.params.posts_id });
+        // console.log(ownPost, 'ownPostownPostownPostownPost')
 
-        post.likes.push({user: req.user.id})
-    }       
-        console.log(req)
-        
-        await post.save();
-        res.json(post.likes);
+      const delMessage = ownPost.message.find(
+        post => post._id.toString() === req.params.message_id.toString()
+        );
+         
+        await ownPost.message.pull(delMessage);
+        await ownPost.save();
+
+        res.json({
+            msg: 'Message deleted'
+            });
     } catch (err) {
         console.error(err.messasge);
-        res.status(500).send('Server Error'); 
+        if(err.kind === 'ObjectId') {
+            res.status(400).send('Post not found')
+        }
+        res.status(500).send('Server Error');
     }
-})
+
+} )
+
+// router.put('/likes/:id', auth, async (req, res) => {
+//     try {
+//         const post = await Post.findById(req.params.id);
+
+
+//         if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
+            
+//              let postNew =  post.likes.map(like => like.user.toString()).indexOf(req.user.id)
+//             post.likes.splice(postNew, 1);
+//             // return res.status(400).json({msg: "Like is been"});
+        
+//     } else if(post.likes.filter(like => like.user.toString() === req.user.id).length === 0){
+
+//         post.likes.push({user: req.user.id})
+//     }       
+//         console.log(req)
+        
+//         await post.save();
+//         res.json(post.likes);
+//     } catch (err) {
+//         console.error(err.messasge);
+//         res.status(500).send('Server Error'); 
+//     }
+// })
 
 module.exports = router;

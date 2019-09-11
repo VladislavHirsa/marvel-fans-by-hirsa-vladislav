@@ -7,8 +7,7 @@ import { getUserData } from "./auth_api";
 /////
 export const getProfileMe = () => async(dispatch) => {
     try {
-  const res = await axios.get('/api/profile/me')
-  //  console.log(res.data, "getProfileMe")
+  const res = await axios.get('/api/profile/me');
    dispatch(setUserProfile(res.data))
      
 
@@ -21,7 +20,7 @@ export const getProfileMe = () => async(dispatch) => {
 
 /////
   export const CreateUserProfile = (formData) => async(dispatch) => {
-    console.log(formData, 'CreateUserProfile')
+
     try {
     const res = await axios.post('/api/profile', formData)
     console.log(res, "CreateUserProfile")
@@ -40,7 +39,6 @@ export const getProfileMe = () => async(dispatch) => {
   export const getUserById = (user_id) => async(dispatch) => {
       try {
           const res = await axios.get(`/api/profile/user/${user_id}`)
-          // console.log(res, "getUserById")
           dispatch(setUserById(res.data))
           
       } catch (err) {

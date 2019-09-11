@@ -1,6 +1,7 @@
 const ADD_POST_REDUCER = 'ADD_POST_REDUCER';
 const SET_ALL_POSTS = 'SET_ALL_POSTS';
 const SET_POST = 'SET_POST';
+const CLEAR_POST = 'CLEAR_POST';
 
 
 const initialState = {
@@ -27,6 +28,14 @@ const initialState = {
                 }
             }
 
+            case CLEAR_POST: {
+                return {
+                    ...state,
+                    post: [],
+                    posts: []
+                }
+            }
+
         default:
             return state;
     }
@@ -44,6 +53,10 @@ export const setPost = ( Post ) => ({
 
 export const setAllPosts = ( allPosts) => ({
     type: SET_ALL_POSTS, allPosts
+});
+
+export const clearPost = () => ({
+    type: CLEAR_POST
 });
 
 

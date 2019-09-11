@@ -39,30 +39,12 @@
     padding-bottom: 25px;
 }
 
-.users_scroll {
-    height: 90%;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    padding: 0 5px;
-}
+
 
 
 @media screen and (min-width: 768px) {
-    /* .post_conteiner_dialog {
-        position: relative;
-        bottom: 0;
-        height: 10%;
-    } */
 
-    .users_scroll::-webkit-scrollbar {
-        width: 32px;
-    }
-    
-    
-    .users_scroll::-webkit-scrollbar-thumb {
-        background-image: url('../../assets/image/deadpool.png');
-        background-repeat: no-repeat;
-        width: 32px;
-        background-size: 32px;
-    }
+
+
+
 }

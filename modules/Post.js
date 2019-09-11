@@ -2,16 +2,6 @@ const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
   
-
-  likes: [
-    {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
-      }
-    }
-  ],
-  
   message: [
     {
       user: {
@@ -27,6 +17,9 @@ const PostSchema = new mongoose.Schema({
       },
       avatar: {
         type: String
+      },
+      readed: {
+        type: Boolean
       },
       date: {
         type: Date,

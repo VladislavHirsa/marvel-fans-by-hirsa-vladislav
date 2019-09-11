@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import css from './UsersAPIComponent.module.css';
 import {NavLink} from 'react-router-dom';
+import css_common from '../commonStyles/Common.module.css';
+
 
 
 const Users = (props) => {
@@ -28,7 +30,7 @@ return <>
         onChange={ e => onChange(e)}
         /> 
     </form>
-<div className={css.users_scroll} >
+<div className={css_common.container_scroll} >
     {
             findFriends.map( u => <div key={u._id}  className={css.users_user} >
         <NavLink to={'/profile/' + u.user._id} >

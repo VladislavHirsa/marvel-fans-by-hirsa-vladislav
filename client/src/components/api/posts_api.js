@@ -28,18 +28,18 @@ console.log(newText)
 
 export const goToPosts = ( user_id ) => async ( dispatch ) => {
 
-
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
+
   try {
 
     const res = await axios.post( '/api/post', user_id, config );
     dispatch( addPostReducer( res.data ) );
     return res.data;
-    // console.log( res.data, 'addPostReducer' )
+
   } catch ( err ) {
     console.error( err )
   }
@@ -63,19 +63,32 @@ export const getPost = ( post_id ) => async ( dispatch ) => {
   try {
     const res = await axios.get( `/api/post/post/${post_id}` );
     dispatch( setPost( res.data ) )
-    let a = setInterval( () => {getPost(post_id)} , 2000);
-    // console.log( res.data, "getPostAPI POST POST POST" )
   } catch ( err ) {
-
+    console.error(err)
   }
 }
 
-export const deletePost = ( post_id ) => async ( dispatch ) => {
-console.log(post_id, 'post_id.....')
+export const deletePost = ( post_id, user_id ) => async ( dispatch ) => {
+console.log(post_id, user_id, 'post_id.....')
 try {
   
-    await axios.delete(`/api/post/post/${post_id}`)
+    await axios.delete(`/api/post/post/${post_id}/${user_id}`)
     console.log( 'Delete..............')
+
+} catch (err) {
+  console.log(err,'Error')
+}
+
+}
+
+export const deleteMessage = ( posts_id, message_id ) => async ( dispatch ) => {
+console.log(message_id, posts_id, 'posts_id.....')
+
+try {
+  
+  await axios.delete(`/api/post/posts/${posts_id}/${message_id}`)
+  .then(res => alert(res.data.msg))
+  // console.log( 'Delete..............')
 
 } catch (err) {
   console.log(err,'Error')

@@ -53,7 +53,7 @@ router.post(
       name,
       email,
       location,
-      bio,
+      avatar,
       status,
       interests,
       instagram,
@@ -73,10 +73,10 @@ router.post(
     } else if (location === "") {
       profileFields.location = ""
     }
-    if ( bio ) {
-      profileFields.bio = bio;
-    } else if (bio === "") {
-      profileFields.bio = ""
+    if ( avatar ) {
+      profileFieldsData.avatar = avatar;
+    } else if (avatar === "") {
+      profileFieldsData.avatar = "https://images.app.goo.gl/NG9v1DgyDhnQe1AL6"
     }
     if ( status ) profileFields.status = status;
 

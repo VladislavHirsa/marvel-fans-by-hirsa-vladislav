@@ -7,8 +7,8 @@ import Loading from '../../Loading';
 import { getUserData } from '../api/auth_api';
 import { CreateUserProfile, getProfileMe } from '../api/profile_api';
 import HelmetFunc from '../actions/HelmetFunc';
-
-
+import css_common from '../commonStyles/Common.module.css';
+import css from './SettingsForm.module.css'
 
 
  const Settings = ({getProfileMe, CreateUserProfile, getUserData, HelmetFunc, profile, user}) => {
@@ -23,6 +23,7 @@ import HelmetFunc from '../actions/HelmetFunc';
   const [state, setState] = useState({
   name: null,
   email: null,
+  avatar: null,
   status: null,
   interests: null,
   location: null
@@ -34,6 +35,7 @@ import HelmetFunc from '../actions/HelmetFunc';
       setState({
         name: user.name,
         email: user.email,
+        avatar: user.avatar,
         status: profile.status,
         interests: profile.interests,
         location: profile.location,
@@ -50,6 +52,7 @@ import HelmetFunc from '../actions/HelmetFunc';
     const {
       name,
       email,
+      avatar,
       status,
       interests,
       location,
@@ -59,6 +62,7 @@ import HelmetFunc from '../actions/HelmetFunc';
     const data = {
       name,
       email,
+      avatar,
       status,
       interests,
       location,
@@ -73,11 +77,11 @@ import HelmetFunc from '../actions/HelmetFunc';
    
     
 
-    return <>
+    return <div className={css_common.container_scroll} >
           {
           HelmetFunc({ content: 'Settings', title: 'Settings' })
           }
-    
+           {/* <img src={avatar} alt='Avatar' className={css.settings_avatar} /> */}
            <div>Wellcome Superhero { user.name } </div> 
         {status !== null
         ? <Fragment> You can change your profile here</Fragment> 
@@ -92,7 +96,7 @@ import HelmetFunc from '../actions/HelmetFunc';
 
         
 
-        </>
+        </div>
 }
 
 

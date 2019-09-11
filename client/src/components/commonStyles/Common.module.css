@@ -1,3 +1,5 @@
+ /* Forms  */
+
 .form input {
     font-size: 1.2rem;
     width: calc(40% - 10px);
@@ -13,16 +15,20 @@
     margin-top: 7px;
 }
 
-/* .form input:-webkit-autofill {
-    background-color: transparent;   
-} */
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
+
+
+.form input, input[type=text]:-webkit-autofill,
+.form input, input[type=text]:-webkit-autofill:hover, 
+.form input, input[type=text]:-webkit-autofill:focus, 
+.form input, input[type=text]:-webkit-autofill:active  {
     transition: background-color 5000s ease-in-out 0s; 
     -webkit-text-fill-color: whitesmoke;
+}
+
+input[type=text].login_password {
+    
+    -webkit-text-fill-color: rgb(0, 0, 0);
 }
 
 
@@ -53,8 +59,41 @@ input:-webkit-autofill:active  {
     border: 3px inset rgb(136, 6, 6);
 }
 
+/* Scroll */
+
+.container_scroll {
+    height: 90%;
+    overflow-y: scroll;
+    scrollbar-color: rgb(252, 0, 0) transparent;
+    scrollbar-width: thin;
+    padding: 0 5px;
+}
+
 @media screen and (max-width: 767px){
+    /* Forms */
     .form input {
         border: 1px solid black;
     }
+}
+
+@media screen and (min-width: 768px){
+    /* Forms */
+    .form input {
+        border: 1px solid black;
+    }
+
+
+    .container_scroll::-webkit-scrollbar {
+        scroll-behavior: smooth;
+        width: 32px;
+    }
+    
+    
+    .container_scroll::-webkit-scrollbar-thumb {
+        background-image: url('../../assets/image/deadpool.png');
+        background-repeat: no-repeat;
+        width: 32px;
+        background-size: 32px;
+    }
+
 }
