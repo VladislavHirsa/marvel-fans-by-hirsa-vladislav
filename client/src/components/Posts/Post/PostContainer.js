@@ -8,8 +8,6 @@ import  Post  from './Post'
 import Dialog from './Dialog';
 import HelmetFunc from '../../actions/HelmetFunc'
 import css from '../Posts.module.css'
-// import Loading from '../../../Loading';
-
 
 
 
@@ -27,9 +25,9 @@ import css from '../Posts.module.css'
 
   componentDidMount() {
       const post_id = this.props.match.params.post_id
-      // this.props.getPost(post_id)
+      
       this.interval = setInterval(() => {this.props.getPost(post_id)}, 1000)
-    this.setState = ({
+      this.setState = ({
       scrollMove: false
     })
   }
@@ -38,7 +36,7 @@ import css from '../Posts.module.css'
     render() {
 
       if( this.props.post && this.props.post.length === 0 ) {
-        return <div> Wait mother's fucker </div>
+        return <div> Wait please </div>
       }
         return <>
     <div className={css.post_container}>
